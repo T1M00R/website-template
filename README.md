@@ -16,21 +16,35 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Customization
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+You can start customizing the template by modifying the pages in the `app` directory:
+
+- `page.tsx` - Home page
+- `services/page.tsx` - Services page
+- `about/page.tsx` - About page
+- `contact/page.tsx` - Contact page
+- `pricing/page.tsx` - Pricing page
+
+The shared components are in the `app/components` directory:
+- `Header.tsx` - Navigation header
+- `Footer.tsx` - Site footer
+
+## Usage Rights
+
+Feel free to use this template to build and sell websites for plumbing businesses or other service-based companies. You can modify it as needed for your clients.
+
+Any contributions to improve this template are welcome! Please submit a pull request with your enhancements.
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+This project uses:
+- [Next.js](https://nextjs.org/docs) - React framework
+- [Tailwind CSS](https://tailwindcss.com/docs) - Utility-first CSS framework
+- [Geist Font](https://vercel.com/font) - A modern sans-serif font by Vercel
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new) from the creators of Next.js.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Check out the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
