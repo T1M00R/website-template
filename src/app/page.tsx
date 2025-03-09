@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ShieldCheckIcon, ClockIcon, CurrencyDollarIcon, CheckBadgeIcon } from "@heroicons/react/24/outline";
 
 export default function Home() {
   return (
@@ -85,13 +86,31 @@ export default function Home() {
           <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">Why Choose Our Plumbing Services</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { title: "Licensed & Insured", description: "All our plumbers are fully licensed and insured." },
-              { title: "24/7 Availability", description: "Emergency services available any time, day or night." },
-              { title: "Fair Pricing", description: "Transparent pricing with no hidden fees or surprises." },
-              { title: "Satisfaction Guaranteed", description: "We're not happy until you're completely satisfied." }
+              { 
+                title: "Licensed & Insured", 
+                description: "All our plumbers are fully licensed and insured.",
+                icon: ShieldCheckIcon
+              },
+              { 
+                title: "24/7 Availability", 
+                description: "Emergency services available any time, day or night.",
+                icon: ClockIcon
+              },
+              { 
+                title: "Fair Pricing", 
+                description: "Transparent pricing with no hidden fees or surprises.",
+                icon: CurrencyDollarIcon
+              },
+              { 
+                title: "Satisfaction Guaranteed", 
+                description: "We're not happy until you're completely satisfied.",
+                icon: CheckBadgeIcon
+              }
             ].map((item, index) => (
               <div key={index} className="text-center p-6 bg-white rounded-lg shadow-sm">
-                <div className="text-blue-600 text-4xl font-bold mb-2">{index + 1}</div>
+                <div className="flex justify-center mb-4">
+                  <item.icon className="h-12 w-12 text-blue-600" />
+                </div>
                 <h3 className="text-xl font-semibold mb-2 text-gray-800">{item.title}</h3>
                 <p className="text-gray-700">{item.description}</p>
               </div>

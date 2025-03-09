@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { PhoneIcon, MagnifyingGlassIcon, DocumentTextIcon, CheckCircleIcon } from "@heroicons/react/24/outline";
 
 export default function Services() {
   const services = [
@@ -121,20 +122,36 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Service Process */}
+      {/* Our Service Process */}
       <section className="py-16 bg-gray-100">
         <div className="container mx-auto px-6">
           <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">Our Service Process</h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {[
-              { title: "Contact Us", description: "Call us or fill out our online form to schedule a service appointment." },
-              { title: "Diagnosis", description: "Our plumber will inspect the issue and provide a detailed diagnosis." },
-              { title: "Transparent Quote", description: "You'll receive a clear, upfront quote before any work begins." },
-              { title: "Quality Service", description: "We complete the job efficiently and clean up when we're done." }
+              { 
+                title: "Contact Us", 
+                description: "Call us or fill out our online form to schedule a service appointment.",
+                icon: PhoneIcon
+              },
+              { 
+                title: "Diagnosis", 
+                description: "Our plumber will inspect the issue and provide a detailed diagnosis.",
+                icon: MagnifyingGlassIcon
+              },
+              { 
+                title: "Transparent Quote", 
+                description: "You'll receive a clear, upfront quote before any work begins.",
+                icon: DocumentTextIcon
+              },
+              { 
+                title: "Quality Service", 
+                description: "We complete the job efficiently and clean up when we're done.",
+                icon: CheckCircleIcon
+              }
             ].map((step, index) => (
               <div key={index} className="text-center bg-white p-6 rounded-lg shadow-sm">
-                <div className="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
-                  {index + 1}
+                <div className="flex justify-center mb-4">
+                  <step.icon className="h-16 w-16 text-blue-600" />
                 </div>
                 <h3 className="text-xl font-semibold mb-2 text-gray-800">{step.title}</h3>
                 <p className="text-gray-700">{step.description}</p>

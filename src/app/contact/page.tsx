@@ -1,7 +1,44 @@
+"use client"
+
 import Link from "next/link";
 import Image from "next/image";
+import { useState } from "react";
 
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    service: '',
+    message: ''
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [id]: value
+    }));
+  };
+
+  const generateMailtoLink = () => {
+    const subject = `Plumbing Service Request: ${formData.service || 'General Inquiry'}`;
+    
+    const body = `
+First Name: ${formData.firstName}
+Last Name: ${formData.lastName}
+Email: ${formData.email}
+Phone: ${formData.phone}
+Service Needed: ${formData.service}
+
+Message:
+${formData.message}
+    `;
+    
+    return `mailto:timoor.nurzhanov@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
+// TODO: CHANGE TO CLIENT EMAIL
   return (
     <div className="min-h-screen">
       {/* Contact Header */}
@@ -56,7 +93,7 @@ export default function Contact() {
                   <div>
                     <h3 className="font-semibold text-lg text-gray-800">Office Location</h3>
                     <p className="text-gray-600 mb-1">Main Service Center</p>
-                    <address className="not-italic text-gray-600">
+                    <address className="not-italic text-gray-700">
                       123 Plumbing Street<br />
                       Anytown, ST 12345
                     </address>
@@ -68,15 +105,17 @@ export default function Contact() {
             {/* Contact Form */}
             <div>
               <h2 className="text-2xl font-bold mb-6 text-gray-800">Send Us a Message</h2>
-              <form className="space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="bg-gray-100 p-6 rounded-lg border border-gray-200">
+                <div className="space-y-4">
                   <div>
                     <label htmlFor="firstName" className="block text-gray-800 mb-1">First Name</label>
                     <input 
                       type="text" 
                       id="firstName" 
                       placeholder="Enter your first name" 
-                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black placeholder-gray-500" 
+                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black placeholder-gray-500"
+                      value={formData.firstName}
+                      onChange={handleChange}
                     />
                   </div>
                   <div>
@@ -85,59 +124,84 @@ export default function Contact() {
                       type="text" 
                       id="lastName" 
                       placeholder="Enter your last name" 
-                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black placeholder-gray-500" 
+                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black placeholder-gray-500"
+                      value={formData.lastName}
+                      onChange={handleChange}
                     />
                   </div>
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-gray-800 mb-1">Email Address</label>
-                  <input 
-                    type="email" 
-                    id="email" 
-                    placeholder="Enter your email address" 
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black placeholder-gray-500" 
-                  />
-                </div>
-                <div>
-                  <label htmlFor="phone" className="block text-gray-800 mb-1">Phone Number</label>
-                  <input 
-                    type="tel" 
-                    id="phone" 
-                    placeholder="Enter your phone number" 
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black placeholder-gray-500" 
-                  />
-                </div>
-                <div>
-                  <label htmlFor="service" className="block text-gray-800 mb-1">Service Needed</label>
-                  <select 
-                    id="service" 
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
+                  <div>
+                    <label htmlFor="email" className="block text-gray-800 mb-1">Email Address</label>
+                    <input 
+                      type="email" 
+                      id="email" 
+                      placeholder="Enter your email address" 
+                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black placeholder-gray-500"
+                      value={formData.email}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="phone" className="block text-gray-800 mb-1">Phone Number</label>
+                    <input 
+                      type="tel" 
+                      id="phone" 
+                      placeholder="Enter your phone number" 
+                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black placeholder-gray-500"
+                      value={formData.phone}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="service" className="block text-gray-800 mb-1">Service Needed</label>
+                    <select 
+                      id="service" 
+                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
+                      value={formData.service}
+                      onChange={handleChange}
+                    >
+                      <option value="" className="text-black">Select a service</option>
+                      <option value="Emergency Repair" className="text-black">Emergency Repair</option>
+                      <option value="General Plumbing" className="text-black">General Plumbing</option>
+                      <option value="Installation" className="text-black">Installation</option>
+                      <option value="Maintenance" className="text-black">Maintenance</option>
+                      <option value="Other" className="text-black">Other</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label htmlFor="message" className="block text-gray-800 mb-1">Message</label>
+                    <textarea 
+                      id="message" 
+                      rows={4} 
+                      placeholder="Tell us about your plumbing needs" 
+                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black placeholder-gray-500"
+                      value={formData.message}
+                      onChange={handleChange}
+                    ></textarea>
+                  </div>
+                  <a 
+                    href={generateMailtoLink()}
+                    className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-md transition-colors w-full block text-center"
                   >
-                    <option value="" className="text-black">Select a service</option>
-                    <option value="emergency" className="text-black">Emergency Repair</option>
-                    <option value="plumbing" className="text-black">General Plumbing</option>
-                    <option value="installation" className="text-black">Installation</option>
-                    <option value="maintenance" className="text-black">Maintenance</option>
-                    <option value="other" className="text-black">Other</option>
-                  </select>
+                    Send Email
+                  </a>
+                  <p className="text-sm text-gray-600 mt-2">
+                    This will open your default email client with the form information.
+                  </p>
                 </div>
-                <div>
-                  <label htmlFor="message" className="block text-gray-800 mb-1">Message</label>
-                  <textarea 
-                    id="message" 
-                    rows={4} 
-                    placeholder="Tell us about your plumbing needs" 
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black placeholder-gray-500"
-                  ></textarea>
+              </div>
+              
+              <div className="mt-8">
+                <h3 className="text-xl font-semibold mb-4 text-gray-800">Emergency Service</h3>
+                <div className="bg-red-50 p-6 rounded-lg border border-red-200">
+                  <p className="text-gray-700 mb-4">For emergency plumbing issues requiring immediate attention, please call our 24/7 emergency line:</p>
+                  <a href="tel:+15551234567" className="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-md transition-colors inline-flex items-center">
+                    <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    </svg>
+                    (555) 123-4567
+                  </a>
                 </div>
-                <div className="flex items-center">
-                  <input type="checkbox" id="terms" className="mr-2" />
-                  <label htmlFor="terms" className="text-gray-700">I agree to the <a href="#" className="text-blue-600">terms and conditions</a> and <a href="#" className="text-blue-600">privacy policy</a>.</label>
-                </div>
-                <button type="submit" className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-md transition-colors w-full">
-                  Submit Request
-                </button>
-              </form>
+              </div>
             </div>
           </div>
         </div>
@@ -181,28 +245,38 @@ export default function Contact() {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-6">
           <h2 className="text-2xl font-bold mb-6 text-gray-800">Business Hours</h2>
-          <div className="max-w-md">
-            <div className="flex justify-between py-2 border-b border-gray-200">
-              <span className="font-medium text-gray-700">Monday - Friday</span>
-              <span className="text-gray-600">8:00 AM - 6:00 PM</span>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <h3 className="font-semibold text-lg mb-3 text-gray-800">Regular Hours</h3>
+              <ul className="space-y-2">
+                <li className="flex justify-between">
+                  <span className="text-gray-700">Monday - Friday</span>
+                  <span className="text-gray-700">8:00 AM - 6:00 PM</span>
+                </li>
+                <li className="flex justify-between">
+                  <span className="text-gray-700">Saturday</span>
+                  <span className="text-gray-700">9:00 AM - 4:00 PM</span>
+                </li>
+                <li className="flex justify-between">
+                  <span className="text-gray-700">Sunday</span>
+                  <span className="text-gray-700">Closed</span>
+                </li>
+              </ul>
             </div>
-            <div className="flex justify-between py-2 border-b border-gray-200">
-              <span className="font-medium text-gray-700">Saturday</span>
-              <span className="text-gray-600">9:00 AM - 4:00 PM</span>
-            </div>
-            <div className="flex justify-between py-2">
-              <span className="font-medium text-gray-700">Sunday</span>
-              <span className="text-gray-600">Closed (Emergency Service Available)</span>
+            <div>
+              <h3 className="font-semibold text-lg mb-3 text-gray-800">Emergency Service</h3>
+              <p className="text-gray-700">Our emergency plumbing service is available 24 hours a day, 7 days a week, including holidays. Call our emergency line for immediate assistance.</p>
             </div>
           </div>
         </div>
       </section>
 
+      {/* Emergency CTA */}
       <section className="py-16 bg-blue-600 text-white">
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-3xl font-bold mb-4">Plumbing Emergency?</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">Don't wait! Our emergency plumbing team is available 24/7.</p>
-          <a href="tel:+15551234567" className="bg-white hover:bg-gray-100 text-blue-600 font-bold py-3 px-6 rounded-md inline-flex items-center transition-colors">
+          <p className="text-xl mb-8 max-w-2xl mx-auto">Don't wait! Our emergency plumbers are available 24/7 to help with urgent plumbing issues.</p>
+          <a href="tel:+15551234567" className="bg-white hover:bg-gray-100 text-blue-600 font-bold py-3 px-6 rounded-md transition-colors inline-flex items-center">
             <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
             </svg>
