@@ -8,6 +8,13 @@ export default function Home() {
       <section className="relative h-[80vh] flex items-center">
         <div className="absolute inset-0 z-0 bg-blue-900">
           {/* Placeholder for hero image */}
+          <Image 
+            src="/images/plumbing-hero.jpg" 
+            alt="Plumbing Hero" 
+            fill 
+            className="object-cover" 
+            style={{ objectPosition: 'center top' }} 
+          />
           <div className="w-full h-full flex items-center justify-center text-white/50 text-xl font-semibold">
             Plumbing Hero Image Placeholder
           </div>

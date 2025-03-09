@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Contact() {
   return (
@@ -17,7 +18,7 @@ export default function Contact() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Information */}
             <div>
-              <h2 className="text-2xl font-bold mb-6">Get In Touch</h2>
+              <h2 className="text-2xl font-bold mb-6 text-gray-800">Get In Touch</h2>
               <div className="space-y-6">
                 <div className="flex items-start">
                   <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
@@ -26,7 +27,7 @@ export default function Contact() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-lg">Phone</h3>
+                    <h3 className="font-semibold text-lg text-gray-800">Phone</h3>
                     <p className="text-gray-600 mb-1">24/7 Emergency Service</p>
                     <a href="tel:+15551234567" className="text-blue-600 font-medium text-lg">(555) 123-4567</a>
                   </div>
@@ -39,7 +40,7 @@ export default function Contact() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-lg">Email</h3>
+                    <h3 className="font-semibold text-lg text-gray-800">Email</h3>
                     <p className="text-gray-600 mb-1">For quotes and information</p>
                     <a href="mailto:info@plumbingcompany.com" className="text-blue-600 font-medium">info@plumbingcompany.com</a>
                   </div>
@@ -53,7 +54,7 @@ export default function Contact() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-lg">Office Location</h3>
+                    <h3 className="font-semibold text-lg text-gray-800">Office Location</h3>
                     <p className="text-gray-600 mb-1">Main Service Center</p>
                     <address className="not-italic text-gray-600">
                       123 Plumbing Street<br />
@@ -61,128 +62,79 @@ export default function Contact() {
                     </address>
                   </div>
                 </div>
-
-                <div className="flex items-start">
-                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                    <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg">Business Hours</h3>
-                    <p className="text-gray-600 mb-1">Regular Service Hours</p>
-                    <p className="text-gray-600">
-                      Monday - Friday: 8:00 AM - 6:00 PM<br />
-                      Saturday: 9:00 AM - 4:00 PM<br />
-                      Sunday: Closed (Emergency Service Available)
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-8 p-6 bg-gray-50 rounded-lg">
-                <h3 className="font-semibold text-lg mb-2">Service Area</h3>
-                <p className="text-gray-600 mb-4">We proudly serve the following areas and surrounding communities:</p>
-                <div className="grid grid-cols-2 gap-2">
-                  {["Downtown", "Westside", "Northside", "Eastside", "Southside", "Midtown"].map((area, index) => (
-                    <div key={index} className="flex items-center">
-                      <svg className="w-4 h-4 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                      <span>{area}</span>
-                    </div>
-                  ))}
-                </div>
               </div>
             </div>
 
             {/* Contact Form */}
             <div>
-              <h2 className="text-2xl font-bold mb-6">Send Us a Message</h2>
-              <form className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <h2 className="text-2xl font-bold mb-6 text-gray-800">Send Us a Message</h2>
+              <form className="space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-1">First Name</label>
-                    <input
-                      type="text"
-                      id="firstName"
-                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-                      placeholder="Your first name"
+                    <label htmlFor="firstName" className="block text-gray-800 mb-1">First Name</label>
+                    <input 
+                      type="text" 
+                      id="firstName" 
+                      placeholder="Enter your first name" 
+                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black placeholder-gray-500" 
                     />
                   </div>
                   <div>
-                    <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
-                    <input
-                      type="text"
-                      id="lastName"
-                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-                      placeholder="Your last name"
+                    <label htmlFor="lastName" className="block text-gray-800 mb-1">Last Name</label>
+                    <input 
+                      type="text" 
+                      id="lastName" 
+                      placeholder="Enter your last name" 
+                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black placeholder-gray-500" 
                     />
                   </div>
                 </div>
-
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
-                  <input
-                    type="email"
-                    id="email"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="your.email@example.com"
+                  <label htmlFor="email" className="block text-gray-800 mb-1">Email Address</label>
+                  <input 
+                    type="email" 
+                    id="email" 
+                    placeholder="Enter your email address" 
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black placeholder-gray-500" 
                   />
                 </div>
-
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="(555) 123-4567"
+                  <label htmlFor="phone" className="block text-gray-800 mb-1">Phone Number</label>
+                  <input 
+                    type="tel" 
+                    id="phone" 
+                    placeholder="Enter your phone number" 
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black placeholder-gray-500" 
                   />
                 </div>
-
                 <div>
-                  <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-1">Service Needed</label>
-                  <select
-                    id="service"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                  <label htmlFor="service" className="block text-gray-800 mb-1">Service Needed</label>
+                  <select 
+                    id="service" 
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
                   >
-                    <option value="">Select a service</option>
-                    <option value="emergency">Emergency Repair</option>
-                    <option value="bathroom">Bathroom Remodeling</option>
-                    <option value="drain">Drain Cleaning</option>
-                    <option value="water-heater">Water Heater Service</option>
-                    <option value="pipe">Pipe Repair</option>
-                    <option value="commercial">Commercial Plumbing</option>
-                    <option value="other">Other</option>
+                    <option value="" className="text-black">Select a service</option>
+                    <option value="emergency" className="text-black">Emergency Repair</option>
+                    <option value="plumbing" className="text-black">General Plumbing</option>
+                    <option value="installation" className="text-black">Installation</option>
+                    <option value="maintenance" className="text-black">Maintenance</option>
+                    <option value="other" className="text-black">Other</option>
                   </select>
                 </div>
-
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Message</label>
-                  <textarea
-                    id="message"
-                    rows={4}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="Please describe your plumbing issue or service request..."
+                  <label htmlFor="message" className="block text-gray-800 mb-1">Message</label>
+                  <textarea 
+                    id="message" 
+                    rows={4} 
+                    placeholder="Tell us about your plumbing needs" 
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black placeholder-gray-500"
                   ></textarea>
                 </div>
-
-                <div className="flex items-start">
-                  <input
-                    id="terms"
-                    type="checkbox"
-                    className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded mt-1"
-                  />
-                  <label htmlFor="terms" className="ml-2 block text-sm text-gray-600">
-                    I agree to the <a href="#" className="text-blue-600 hover:underline">terms and conditions</a> and <a href="#" className="text-blue-600 hover:underline">privacy policy</a>.
-                  </label>
+                <div className="flex items-center">
+                  <input type="checkbox" id="terms" className="mr-2" />
+                  <label htmlFor="terms" className="text-gray-700">I agree to the <a href="#" className="text-blue-600">terms and conditions</a> and <a href="#" className="text-blue-600">privacy policy</a>.</label>
                 </div>
-
-                <button
-                  type="submit"
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-md transition-colors"
-                >
+                <button type="submit" className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-md transition-colors w-full">
                   Submit Request
                 </button>
               </form>
@@ -191,17 +143,61 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Map Section */}
-      <section className="py-16 bg-gray-50">
+      {/* Service Area */}
+      <section className="py-16 bg-gray-100">
         <div className="container mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center mb-12">Find Us</h2>
-          <div className="bg-gray-300 h-[400px] rounded-lg flex items-center justify-center text-gray-600">
-            Map Placeholder - Our Location
+          <h2 className="text-2xl font-bold mb-6 text-gray-800">Service Area</h2>
+          <p className="text-gray-700 mb-4">We proudly serve the following areas and surrounding communities:</p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="flex items-center">
+              <svg className="w-5 h-5 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span className="text-gray-700">Downtown</span>
+            </div>
+            <div className="flex items-center">
+              <svg className="w-5 h-5 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span className="text-gray-700">Westside</span>
+            </div>
+            <div className="flex items-center">
+              <svg className="w-5 h-5 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span className="text-gray-700">Northside</span>
+            </div>
+            <div className="flex items-center">
+              <svg className="w-5 h-5 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span className="text-gray-700">Eastside</span>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Emergency Call */}
+      {/* Business Hours */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-6">
+          <h2 className="text-2xl font-bold mb-6 text-gray-800">Business Hours</h2>
+          <div className="max-w-md">
+            <div className="flex justify-between py-2 border-b border-gray-200">
+              <span className="font-medium text-gray-700">Monday - Friday</span>
+              <span className="text-gray-600">8:00 AM - 6:00 PM</span>
+            </div>
+            <div className="flex justify-between py-2 border-b border-gray-200">
+              <span className="font-medium text-gray-700">Saturday</span>
+              <span className="text-gray-600">9:00 AM - 4:00 PM</span>
+            </div>
+            <div className="flex justify-between py-2">
+              <span className="font-medium text-gray-700">Sunday</span>
+              <span className="text-gray-600">Closed (Emergency Service Available)</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="py-16 bg-blue-600 text-white">
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-3xl font-bold mb-4">Plumbing Emergency?</h2>

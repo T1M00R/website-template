@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function About() {
   return (
@@ -21,8 +22,13 @@ export default function About() {
               <p className="text-gray-700 mb-4">Our founder, with over 30 years of experience in the plumbing industry, established the company on the principles of quality workmanship, fair pricing, and exceptional customer service. These core values continue to guide our business today.</p>
               <p className="text-gray-700">As we've grown, we've maintained our commitment to treating every customer's home or business as if it were our own. We take pride in solving plumbing problems efficiently and effectively, with minimal disruption to your daily life.</p>
             </div>
-            <div className="bg-gray-200 h-[400px] rounded-lg flex items-center justify-center text-gray-600 font-medium">
-              Company History Image Placeholder
+            <div className="relative bg-gray-200 h-[400px] rounded-lg overflow-hidden">
+              <Image 
+                src="/images/blue.jpg" 
+                alt="Plumbing Team" 
+                fill 
+                className="object-cover" 
+              />
             </div>
           </div>
         </div>
@@ -68,8 +74,13 @@ export default function About() {
               { name: "Emily Davis", position: "Customer Service Manager" }
             ].map((member, index) => (
               <div key={index} className="text-center">
-                <div className="bg-gray-200 h-64 rounded-lg mb-4 flex items-center justify-center text-gray-600 font-medium">
-                  Team Member Photo
+                <div className="relative bg-gray-200 h-64 rounded-lg mb-4 overflow-hidden">
+                  <Image 
+                    src="/images/green.jpg" 
+                    alt={`${member.name} - ${member.position}`}
+                    fill
+                    className="object-cover"
+                  />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-800">{member.name}</h3>
                 <p className="text-gray-700">{member.position}</p>
@@ -85,8 +96,13 @@ export default function About() {
           <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">Our Certifications & Affiliations</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[1, 2, 3, 4].map((item) => (
-              <div key={item} className="bg-white p-6 rounded-lg shadow-sm flex items-center justify-center h-32">
-                <div className="text-gray-600 font-medium">Certification Logo</div>
+              <div key={item} className="relative bg-white p-6 rounded-lg shadow-sm h-32 overflow-hidden">
+                <Image 
+                  src="/images/plumbing cert.png" 
+                  alt="Plumbing Certification" 
+                  fill
+                  className="object-contain p-2" 
+                />
               </div>
             ))}
           </div>
