@@ -43,26 +43,36 @@ export default function Home() {
             {[
               {
                 title: "Emergency Repairs",
-                description: "24/7 emergency plumbing repairs to fix leaks, clogs, and burst pipes."
+                description: "24/7 emergency plumbing repairs to fix leaks, clogs, and burst pipes.",
+                image: "/images/pipes.jpg"
               },
               {
                 title: "Bathroom Remodeling",
-                description: "Complete bathroom renovation services from design to installation."
+                description: "Complete bathroom renovation services from design to installation.",
+                image: "/images/bathroom.jpg"
               },
               {
-                title: "Drain Cleaning",
-                description: "Professional drain cleaning to remove clogs and prevent future issues."
+                title: "Kitchen Plumbing",
+                description: "Professional kitchen plumbing services including sink and faucet installation.",
+                image: "/images/kitchensink.jpg"
               }
             ].map((service, index) => (
-              <div key={index} className="bg-gray-100 p-6 rounded-lg hover:shadow-lg transition-shadow border border-gray-200">
-                <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mb-4">
-                  <div className="text-white font-bold text-xl">{service.title.charAt(0)}</div>
+              <div key={index} className="bg-gray-100 rounded-lg hover:shadow-lg transition-shadow border border-gray-200 overflow-hidden">
+                <div className="h-48 relative">
+                  <Image 
+                    src={service.image} 
+                    alt={service.title} 
+                    fill 
+                    className="object-cover"
+                  />
                 </div>
-                <h3 className="text-xl font-semibold mb-2 text-gray-800">{service.title}</h3>
-                <p className="text-gray-700 mb-4">{service.description}</p>
-                <Link href="/services" className="text-blue-600 font-medium hover:underline">
-                  Learn more →
-                </Link>
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold mb-2 text-gray-800">{service.title}</h3>
+                  <p className="text-gray-700 mb-4">{service.description}</p>
+                  <Link href="/services" className="text-blue-600 font-medium hover:underline">
+                    Learn more →
+                  </Link>
+                </div>
               </div>
             ))}
           </div>
